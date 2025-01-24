@@ -15,17 +15,9 @@
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
-    "build:linux": "npm run build && electron-builder --linux",
-    "publish": "export $(cat .env | xargs) && electron-forge publish",
-    "package": "electron-vite build --outDir=dist && electron-forge package",
-    "make": "electron-vite build --outDir=dist && electron-forge make"
+    "build:linux": "npm run build && electron-builder --linux"
   },
   "dependencies": {
-    "@electron-forge/cli": "^6.2.1",
-    "@electron-forge/maker-deb": "^6.2.1",
-    "@electron-forge/maker-rpm": "^6.2.1",
-    "@electron-forge/maker-squirrel": "^6.2.1",
-    "@electron-forge/maker-zip": "^6.2.1",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "bcrypt": "^5.1.1",
@@ -36,7 +28,6 @@
     "express-validator": "^7.2.0"
   },
   "devDependencies": {
-    "@electron-forge/publisher-github": "^7.6.1",
     "@electron-toolkit/eslint-config": "^1.0.2",
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
     "@vitejs/plugin-react": "^4.3.1",
