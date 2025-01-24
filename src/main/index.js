@@ -3,12 +3,15 @@ import { app, BrowserWindow, shell } from 'electron'
 import { createServer } from 'http'
 import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
+import { updateElectronApp } from 'update-electron-app'
 
 import { closeDb, initDb } from '../backend/db'
 import expressApp from '../backend/server'
 
 const PORT = process.env.PORT || 10114
 const server = createServer(expressApp)
+
+updateElectronApp()
 
 function createWindow() {
   // Create the browser window.
