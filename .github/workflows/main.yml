@@ -26,7 +26,14 @@ jobs:
           node-version: 22.12.0
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
+          sudo apt-get update
+          sudo apt-get install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0 libgdk-pixbuf2.0-0 libgtk-3-0 libgbm-dev libnss3-dev libxss-dev
+
+      - name: Fix app-builder permissions
+        run: |
+          chmod +x node_modules/app-builder-bin/linux/x64/app-builder
 
       - name: build-linux
         if: matrix.os == 'ubuntu-latest'
