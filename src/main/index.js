@@ -1,10 +1,10 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
-import { app, BrowserWindow, shell } from 'electron'
 import dotenv from 'dotenv'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { createServer } from 'http'
-import { normalize, join } from 'path'
-import icon from '../../resources/icon.png?asset'
+import { join, normalize } from 'path'
 import { updateElectronApp } from 'update-electron-app'
+import icon from '../../resources/icon.png?asset'
 
 import { closeDb, initDb } from '../backend/db'
 import expressApp from '../backend/server'
@@ -39,6 +39,11 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
+  })
+
+  // send url to rendered process
+  ipcMain.on('get-backend-url', (event) => {
+    event.reply('get-backend-url', `http://localhost:${PORT}/api/v1`)
   })
 
   // HMR for renderer base on electron-vite cli.
