@@ -1,5 +1,6 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { app, BrowserWindow, shell } from 'electron'
+import dotenv from 'dotenv'
 import { createServer } from 'http'
 import { normalize, join } from 'path'
 import icon from '../../resources/icon.png?asset'
@@ -7,6 +8,10 @@ import { updateElectronApp } from 'update-electron-app'
 
 import { closeDb, initDb } from '../backend/db'
 import expressApp from '../backend/server'
+
+dotenv.config({
+  path: normalize(join(__dirname, '../../.env'))
+})
 
 const PORT = process.env.PORT || 10114
 const server = createServer(expressApp)
