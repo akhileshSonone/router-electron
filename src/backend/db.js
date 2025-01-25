@@ -1,10 +1,10 @@
 import Database from 'better-sqlite3'
 import { app } from 'electron'
-import { join } from 'path'
+import { normalize, join } from 'path'
 import fs from 'fs'
 
 const userDataPath = app.getPath('userData')
-const dbPath = join(userDataPath, '.router-electron.db')
+const dbPath = normalize(join(userDataPath, '.router-electron.db'))
 export let db
 
 export const initDb = () => {
