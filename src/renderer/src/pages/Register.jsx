@@ -1,6 +1,8 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
+
+import { AppContext } from '../App'
 
 const initialFormData = {
   name: '',
@@ -11,10 +13,11 @@ const initialFormData = {
 const Register = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState(initialFormData)
+  const { backendUrl } = useContext(AppContext)
 
   const handleFormSubmit = () => {
     axios
-      .post('http://localhost:10114/api/v1/user/register', formData)
+      .post(`${backendUrl}/user/register`, formData)
       .then((_) => navigate('/login'))
       .catch((err) => console.error(err))
   }

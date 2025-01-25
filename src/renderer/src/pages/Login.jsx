@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
 import axios from 'axios'
+import { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router'
+
+import { AppContext } from '../App'
 
 const initialFormData = {
   email: '',
@@ -10,10 +12,11 @@ const initialFormData = {
 const Login = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState(initialFormData)
+  const { backendUrl } = useContext(AppContext)
 
   const handleFormSubmit = () => {
     axios
-      .post('http://localhost:10114/api/v1/user/login', formData)
+      .post(`${backendUrl}/user/login`, formData)
       .then(({ data }) => navigate(`/profile/${data.id}`))
       .catch((err) => {
         console.log(err.response.data)
