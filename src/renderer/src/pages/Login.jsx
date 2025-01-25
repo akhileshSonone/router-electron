@@ -12,11 +12,11 @@ const initialFormData = {
 const Login = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState(initialFormData)
-  const { backendUrl } = useContext(AppContext)
+  const { backendURL } = useContext(AppContext)
 
   const handleFormSubmit = () => {
     axios
-      .post(`${backendUrl}/user/login`, formData)
+      .post(`${backendURL}/user/login`, formData)
       .then(({ data }) => navigate(`/profile/${data.id}`))
       .catch((err) => {
         console.log(err.response.data)

@@ -13,11 +13,11 @@ const initialFormData = {
 const Register = () => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState(initialFormData)
-  const { backendUrl } = useContext(AppContext)
+  const { backendURL } = useContext(AppContext)
 
   const handleFormSubmit = () => {
     axios
-      .post(`${backendUrl}/user/register`, formData)
+      .post(`${backendURL}/user/register`, formData)
       .then((_) => navigate('/login'))
       .catch((err) => console.error(err))
   }
