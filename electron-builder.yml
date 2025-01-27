@@ -40,6 +40,5 @@ publish:
   provider: github
   owner: akhileshSonone
   repo: router-electron
-  token: ${ACCESS_TOKEN}
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/
