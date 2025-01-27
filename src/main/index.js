@@ -76,6 +76,11 @@ function setupAutoUpdater() {
     return
   }
 
+  autoUpdater.setFeedURL({
+    provider: 'github',
+    owner: 'akhileshSonone',
+    repo: 'router-electron'
+  })
   autoUpdater.autoDownload = false
   autoUpdater.autoInstallOnAppQuit = true
 
