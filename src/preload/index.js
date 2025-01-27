@@ -10,6 +10,14 @@ const api = {
       })
       ipcRenderer.send('get-backend-url')
     })
+  },
+  onUpdateStatus: () => {
+    return new Promise((resolve) => {
+      ipcRenderer.on('update-status', (_, status) => {
+        resolve(status)
+      })
+      ipcRenderer.send('update-status')
+    })
   }
 }
 
