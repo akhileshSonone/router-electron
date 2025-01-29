@@ -25,6 +25,7 @@ const HomePage = () => {
       setUpdateStatus(receivedStatus)
     }
 
+    removeListener()
     return () => removeListener()
   }, [])
 
@@ -35,7 +36,7 @@ const HomePage = () => {
         <Link to={'/login'}>Login</Link>
         <Link to={'/register'}>Register</Link>
       </div>
-      {updateStatus && <UpdateDialog updateStatus={updateStatus} />}
+      {/*{updateStatus && <UpdateDialog updateStatus={updateStatus} />}*/}
     </div>
   )
 }
